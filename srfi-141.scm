@@ -1,6 +1,7 @@
 (module srfi-141 ()
   (import scheme)
-  (import (only chicken include))
+  (import (only (chicken base) include))
+  (import (chicken module))
   (export ceiling/ ceiling-quotient ceiling-remainder)
   (export floor/ floor-quotient floor-remainder)
   (export truncate/ truncate-quotient truncate-remainder)
