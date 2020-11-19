@@ -14,7 +14,7 @@ To describe the semantics of a division operator pair, it suffices to define the
 
  * r = n - dq,
 
-provided that this choice of q induced an r satisfying |r| < |d|. For an extensive discussion of five of the six division operator pairs proposed here, and some broken but standardized operator pairs that fail to satisfy properties (1)-(3), see Raymond T. Boute, "The Euclidean Definition of the Functions DIV and MOD", ACM TOPLAS 14(2), April 1992, pp. 127-144.
+provided that this choice of q induced an r satisfying |r| < |d|. For an extensive discussion of five of the six division operator pairs proposed here, and some broken but standardized operator pairs that fail to satisfy properties (1)-(3), see Raymond T. Boute, "[[http://dl.acm.org/citation.cfm?id=128862|The Euclidean Definition of the Functions DIV and MOD]]", ACM TOPLAS 14(2), April 1992, pp. 127-144.
 
 Unfortunately, most programming languages give nondescript names such as DIV(IDE), QUOT(IENT), MOD(ULO), and REM(AINDER) to these operations. The language should make clear to programmers what division operations their programs are performing, especially when negative numerators and denominators can arise, but perhaps may not often be tested.
 === Related Standards
@@ -118,4 +118,4 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 === Version history
- * [[https://github.com/diamond-lizard/srfi-141/releases/tag/0.1][0.1]] - Packaged for Chicken Scheme 5
+ * [[https://github.com/diamond-lizard/srfi-141/releases/tag/0.1|0.1]] - Packaged for Chicken Scheme 5
