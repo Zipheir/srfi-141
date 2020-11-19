@@ -104,12 +104,6 @@ When d is a power of 2, say 2^k for some k, this reduces to
  * -2^(k - 1) <= r < 2^(k - 1).
 
 Computer scientists will immediately recognize this as the interval of integers representable in two's-complement with k bits.
-** Implementation
-The implementation is in the repository of this SRFI, and includes the following files:
-
-  * srfi-141-impl.scm - The R5RS-based implementation
-  * srfi-141.scm - Chicken library
-  * srfi-141.sld - R7RS library
 ** Acknowledgements
 Thanks to Sudarshan S. Chawathe for catching several significant errors.
 ** Author
