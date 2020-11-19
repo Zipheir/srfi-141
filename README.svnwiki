@@ -63,7 +63,7 @@ If denominator is the number of units in a block, and <numerator> is some number
 
  * {{q = truncate(n/d)}}
 
-Thus r is negative iff n is negative. However, by any non-unit denominator, the quotient of +1, 0, or -1 is 0; that is, three contiguous numerators by a common denominator share a common quotient. Of the other division operator pairs, only the round pair exhibits this property.
+Thus r is negative iff {{n}} is negative. However, by any non-unit denominator, the quotient of +1, 0, or -1 is 0; that is, three contiguous numerators by a common denominator share a common quotient. Of the other division operator pairs, only the round pair exhibits this property.
 
 <procedure>(round/ numerator denominator)</procedure>
 
@@ -73,7 +73,7 @@ Thus r is negative iff n is negative. However, by any non-unit denominator, the 
 
  * {{q = round(n/d)}}
 
-The round function rounds to the nearest integer, breaking ties by choosing the nearest even integer. Nothing general can be said about the sign of r. Like the truncate operator pair, the quotient of +1, 0, or -1 by any non-unit denominator is 0, so that three contiguous numerators by a common denominator share a common quotient.
+The round function rounds to the nearest integer, breaking ties by choosing the nearest even integer. Nothing general can be said about the sign of {{r}}. Like the truncate operator pair, the quotient of +1, 0, or -1 by any non-unit denominator is 0, so that three contiguous numerators by a common denominator share a common quotient.
 
 <procedure>(euclidean/ numerator denominator)</procedure>
 
