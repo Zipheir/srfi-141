@@ -33,21 +33,21 @@ For each of six division operator pairs -- {{floor}}, {{ceiling}}, {{truncate}},
 
 It is an error if any of the arguments are not integers (exact or inexact). It is also an error to supply zero as a denominator to any of these procedures. If any argument is inexact, the result is inexact, unless the implementation can prove that the inexactness cannot affect the result, as in the case of dividing an exact zero by an inexact number.
 
-<enscript highlight="scheme">
-(floor/ numerator denominator)
-(floor-quotient numerator denominator)
-(floor-remainder numerator denominator)
-</enscript>
+<procedure>(floor/ numerator denominator)</procedure>
+
+<procedure>(floor-quotient numerator denominator)</procedure>
+
+<procedure>(floor-remainder numerator denominator)</procedure>
 
  * {{q = floor(n/d)}}
 
 Thus r is negative iff d is negative.
 
-<enscript highlight="scheme">
-(ceiling/ numerator denominator)
-(ceiling-quotient numerator denominator)
-(ceiling-remainder numerator denominator)
-</enscript>
+<procedure>(ceiling/ numerator denominator)</procedure>
+
+<procedure>(ceiling-quotient numerator denominator)</procedure>
+
+<procedure>(ceiling-remainder numerator denominator)</procedure>
 
  * {{q = ceiling(n/d)}}
 
@@ -55,31 +55,31 @@ Thus r is negative iff d is non-negative.
 
 If denominator is the number of units in a block, and <numerator> is some number of units, then (ceiling-quotient numerator denominator) gives the number of blocks needed to cover numerator units. For example, denominator might be the number of bytes in a disk sector, and numerator the number of bytes in a file; then the quotient is the number of disk sectors needed to store the contents of the file. For another example, denominator might be the number of octets in the output of a cryptographic hash function, and numerator the number of octets desired in a key for a symmetric cipher, to be derived using the cryptographic hash function; then the quotient is the number of hash values needed to concatenate to make a key.
 
-<enscript highlight="scheme">
-(truncate/ numerator denominator)
-(truncate-quotient numerator denominator)
-(truncate-remainder numerator denominator)
-</enscript>
+<procedure>(truncate/ numerator denominator)</procedure>
+
+<procedure>(truncate-quotient numerator denominator)</procedure>
+
+<procedure>(truncate-remainder numerator denominator)</procedure>
 
  * {{q = truncate(n/d)}}
 
 Thus r is negative iff n is negative. However, by any non-unit denominator, the quotient of +1, 0, or -1 is 0; that is, three contiguous numerators by a common denominator share a common quotient. Of the other division operator pairs, only the round pair exhibits this property.
 
-<enscript highlight="scheme">
-(round/ numerator denominator)
-(round-quotient numerator denominator)
-(round-remainder numerator denominator)
-</enscript>
+<procedure>(round/ numerator denominator)</procedure>
+
+<procedure>(round-quotient numerator denominator)</procedure>
+
+<procedure>(round-remainder numerator denominator)</procedure>
 
  * {{q = round(n/d)}}
 
 The round function rounds to the nearest integer, breaking ties by choosing the nearest even integer. Nothing general can be said about the sign of r. Like the truncate operator pair, the quotient of +1, 0, or -1 by any non-unit denominator is 0, so that three contiguous numerators by a common denominator share a common quotient.
 
-<enscript highlight="scheme">
-(euclidean/ numerator denominator)
-(euclidean-quotient numerator denominator)
-(euclidean-remainder numerator denominator)
-</enscript>
+<procedure>(euclidean/ numerator denominator)</procedure>
+
+<procedure>(euclidean-quotient numerator denominator)</procedure>
+
+<procedure>(euclidean-remainder numerator denominator)</procedure>
 
  * If {{d > 0, q = floor(n/d)}}; if {{d < 0, q = ceiling(n/d)}}.
 
@@ -89,11 +89,11 @@ This division operator pair satisfies the stronger property
 
 used often in mathematics. Thus, for example, (euclidean-remainder numerator denominator) is always a valid index into a vector whose length is at least the absolute value of denominator. This division operator pair is so named because it is the subject of the Euclidean division algorithm.
 
-<enscript highlight="scheme">
-(balanced/ numerator denominator)
-(balanced-quotient numerator denominator)
-(balanced-remainder numerator denominator)
-</enscript>
+<procedure>(balanced/ numerator denominator)</procedure>
+
+<procedure>(balanced-quotient numerator denominator)</procedure>
+
+<procedure>(balanced-remainder numerator denominator)</procedure>
 
 This division operator pair satisfies the property
 
