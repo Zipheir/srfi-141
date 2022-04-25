@@ -153,11 +153,23 @@ When ''d'' is a power of 2, say 2^''k'' for some ''k'', this reduces to
 Computer scientists will immediately recognize this as the interval of
 integers representable in two's-complement with ''k'' bits.
 
-== Version history
+== About this egg
 
-* [[https://github.com/diamond-lizard/srfi-141/releases/tag/0.1|0.1]] - Packaged for Chicken Scheme 5
+=== Maintainer
 
-== License
+Wolfgang Corcoran-Mathe
+
+{{wcm at sigwinch dot xyzzy without the zy}}
+
+=== Repository
+
+[[https://github.com/Zipheir/srfi-141|GitHub]]
+
+=== Version history
+
+; 0.1 : Packaged for Chicken Scheme 5 (Sergey Goldgaber)
+
+=== License
 
 Copyright (C) Taylor Campbell, John Cowan (2016). All Rights Reserved.
 
