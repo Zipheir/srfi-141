@@ -5,10 +5,6 @@ remainder operators.
 
 [[toc:]]
 
-== Authors
-
-Taylor Campbell and John Cowan
-
 == SRFI Description
 
 This page is primarily intended to document the forms exported by
@@ -154,6 +150,11 @@ Computer scientists will immediately recognize this as the interval of
 integers representable in two's-complement with ''k'' bits.
 
 == About this egg
+
+=== Authors
+
+SRFI 141 and the implementation used by this egg were created by
+Taylor Campbell and John Cowan.
 
 === Maintainer
 
