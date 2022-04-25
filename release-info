@@ -1,4 +1,5 @@
-(repo git "https://github.com/diamond-lizard/{egg-name}.git")
+(repo git "https://github.com/Zipheir/{egg-name}.git")
 
-(uri targz "https://github.com/diamond-lizard/{egg-name}/archive/{egg-release}.tar.gz")
+(uri targz "https://codeload.github.com/Zipheir/{egg-name}/tar.gz/{egg-release}" whole-repo)
 (release "0.1")
+(release "0.2")
