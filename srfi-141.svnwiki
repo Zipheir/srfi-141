@@ -169,6 +169,7 @@ Wolfgang Corcoran-Mathe
 === Version history
 
 ; 0.1 : Packaged for Chicken Scheme 5 (Sergey Goldgaber)
+; 0.2 : (2022-04-25) New maintainer, add types, use available (chicken base) forms.
 
 === License
 
