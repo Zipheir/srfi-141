@@ -1,7 +1,7 @@
 ;;; srfi-141.egg -*- Scheme -*- vim: ft=scheme:
 
 ((author "Taylor Campbell, John Cowan")
- (maintainer "Sergey Goldgaber")
+ (maintainer "Wolfgang Corcoran-Mathe")
  (synopsis "SRFI 141: Integer division")
  (version "0.1")
  (category math)
