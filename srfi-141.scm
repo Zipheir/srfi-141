@@ -8,7 +8,8 @@
    ceiling/ ceiling-quotient ceiling-remainder)
 
   (import scheme
-          (only (chicken base) include receive exact-integer?))
+          (only (chicken base) include receive exact-integer?)
+          (chicken type))
 
   (include "srfi-141-impl.scm")
 )

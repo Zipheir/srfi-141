@@ -32,10 +32,15 @@
 ;;; OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 ;;; SUCH DAMAGE.
 
+;;; CHICKEN Scheme port edited by Wolfgang Corcoran-Mathe 2022.
+
+(define-type real (or integer ratnum float))
+
 ;;;; Integer Division
 
 ;;;; Ceiling
 
+(: ceiling/ (real real -> real real))
 (define (ceiling/ n d)
   (if (and (exact-integer? n) (exact-integer? d))
       (cond ((and (negative? n) (negative? d))
@@ -51,6 +56,7 @@
       (let ((q (ceiling (/ n d))))
         (values q (- n (* d q))))))
 
+(: ceiling-/- (real real -> real real))
 (define (ceiling-/- n d)
   (let ((n (- 0 n)) (d (- 0 d)))
     (let ((q (quotient n d)) (r (remainder n d)))
@@ -58,12 +64,14 @@
           (values q r)
           (values (+ q 1) (- d r))))))
 
+(: ceiling+/+ (real real -> real real))
 (define (ceiling+/+ n d)
   (let ((q (quotient n d)) (r (remainder n d)))
     (if (zero? r)
         (values q r)
         (values (+ q 1) (- r d)))))
 
+(: ceiling-quotient (real real -> real))
 (define (ceiling-quotient n d)
   (if (and (exact-integer? n) (exact-integer? d))
       (cond ((and (negative? n) (negative? d))
@@ -73,6 +81,7 @@
             (else (receive (q r) (ceiling+/+ n d) r q)))
       (ceiling (/ n d))))
 
+(: ceiling-remainder (real real -> real))
 (define (ceiling-remainder n d)
   (if (and (exact-integer? n) (exact-integer? d))
       (cond ((and (negative? n) (negative? d))
@@ -86,6 +95,7 @@
 
 ;;; 0 <= r < |d|
 
+(: euclidean/ (real real -> real real))
 (define (euclidean/ n d)
   (if (and (exact-integer? n) (exact-integer? d))
       (cond ((and (negative? n) (negative? d)) (ceiling-/- n d))
@@ -97,6 +107,7 @@
       (let ((q (if (negative? d) (ceiling (/ n d)) (floor (/ n d)))))
         (values q (- n (* d q))))))
 
+(: euclidean-quotient (real real -> real))
 (define (euclidean-quotient n d)
   (if (and (exact-integer? n) (exact-integer? d))
       (cond ((and (negative? n) (negative? d))
@@ -106,6 +117,7 @@
             (else (quotient n d)))
       (if (negative? d) (ceiling (/ n d)) (floor (/ n d)))))
 
+(: euclidean-remainder (real real -> real))
 (define (euclidean-remainder n d)
   (if (and (exact-integer? n) (exact-integer? d))
       (cond ((and (negative? n) (negative? d))
@@ -117,6 +129,7 @@
 
 ;;;; Floor
 
+(: floor/ (real real -> real real))
 (define (floor/ n d)
   (if (and (exact-integer? n) (exact-integer? d))
       (cond ((and (negative? n) (negative? d))
@@ -128,6 +141,7 @@
       (let ((q (floor (/ n d))))
         (values q (- n (* d q))))))
 
+(: floor-/+ (real real -> real real))
 (define (floor-/+ n d)
   (let ((n (- 0 n)))
     (let ((q (quotient n d)) (r (remainder n d)))
@@ -135,6 +149,7 @@
           (values (- 0 q) r)
           (values (- (- 0 q) 1) (- d r))))))
 
+(: floor+/- (real real -> real real))
 (define (floor+/- n d)
   (let ((d (- 0 d)))
     (let ((q (quotient n d)) (r (remainder n d)))
@@ -142,6 +157,7 @@
           (values (- 0 q) r)
           (values (- (- 0 q) 1) (- r d))))))
 
+(: floor-quotient (real real -> real))
 (define (floor-quotient n d)
   (if (and (exact-integer? n) (exact-integer? d))
       (cond ((and (negative? n) (negative? d)) (quotient (- 0 n) (- 0 d)))
@@ -150,6 +166,7 @@
             (else (quotient n d)))
       (floor (/ n d))))
 
+(: floor-remainder (real real -> real))
 (define (floor-remainder n d)
   (if (and (exact-integer? n) (exact-integer? d))
       (cond ((and (negative? n) (negative? d))
@@ -161,6 +178,7 @@
 
 ;;;; Round Ties to Even
 
+(: round/ (real real -> real real))
 (define (round/ n d)
   (define (divide n d adjust leave)
     (let ((q (quotient n d)) (r (remainder n d)))
@@ -188,11 +206,13 @@
       (let ((q (round (/ n d))))
         (values q (- n (* d q))))))
 
+(: divisible? (real real -> boolean))
 (define (divisible? n d)
   ;; This operation admits a faster implementation than the one given
   ;; here.
   (zero? (remainder n d)))
 
+(: round-quotient (real real -> real))
 (define (round-quotient n d)
   (if (and (exact-integer? n) (exact-integer? d))
       (receive (q r) (round/ n d)
@@ -200,6 +220,7 @@
         q)
       (round (/ n d))))
 
+(: round-remainder (real real -> real))
 (define (round-remainder n d)
   (if (and (exact-integer? n) (exact-integer? d))
       (receive (q r) (round/ n d)
@@ -209,6 +230,7 @@
 
 ;;;; Truncate
 
+(: truncate/ (real real -> real real))
 (define (truncate/ n d)
   (if (and (exact-integer? n) (exact-integer? d))
       (cond ((and (negative? n) (negative? d))
@@ -225,6 +247,7 @@
       (let ((q (truncate (/ n d))))
         (values q (- n (* d q))))))
 
+(: truncate-quotient (real real -> real))
 (define (truncate-quotient n d)
   (if (and (exact-integer? n) (exact-integer? d))
       (cond ((and (negative? n) (negative? d)) (quotient (- 0 n) (- 0 d)))
@@ -233,6 +256,7 @@
             (else (quotient n d)))
       (truncate (/ n d))))
 
+(: truncate-remainder (real real -> real))
 (define (truncate-remainder n d)
   (if (and (exact-integer? n) (exact-integer? d))
       (cond ((and (negative? n) (negative? d))
@@ -255,6 +279,7 @@
 ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(: balanced/ (real real -> real real))
 (define (balanced/ x y)
   (call-with-values
    (lambda () (euclidean/ x y))
@@ -266,11 +291,13 @@
            (else
             (values (- q 1) (- x (* (- q 1) y))))))))
 
+(: balanced-quotient (real real -> real))
 (define (balanced-quotient x y)
   (call-with-values
    (lambda () (balanced/ x y))
    (lambda (q r) q)))
 
+(: balanced-remainder (real real -> real))
 (define (balanced-remainder x y)
   (call-with-values
    (lambda () (balanced/ x y))

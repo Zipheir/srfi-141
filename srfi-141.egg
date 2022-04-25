@@ -10,4 +10,5 @@
  (components
   (extension
    srfi-141
+   (types-file)
    (csc-options "-O3" "-d1"))))
