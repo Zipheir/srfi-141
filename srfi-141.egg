@@ -7,4 +7,7 @@
  (category math)
  (test-dependencies test)
  (license "BSD")
- (components (extension srfi-141)))
+ (components
+  (extension
+   srfi-141
+   (csc-options "-O3" "-d1"))))
