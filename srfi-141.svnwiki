@@ -48,7 +48,7 @@ Satisfies
 
     q = floor(n/d)
 
-Thus {{r}} is negative iff {{d}} is negative.
+Thus ''r'' is negative iff ''d'' is negative.
 
 === Ceiling
 
