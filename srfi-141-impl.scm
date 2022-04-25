@@ -32,17 +32,6 @@
 ;;; OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 ;;; SUCH DAMAGE.
 
-;;;; Shims
-;;; SRFI-8
-(define-syntax receive
-  (syntax-rules ()
-    ((receive formals expression body ...)
-     (call-with-values (lambda () expression)
-                       (lambda formals body ...)))))
-
-;;; exact-integer?
-(define (exact-integer? x) (and (integer? x) (exact? x)))
-
 ;;;; Integer Division
 
 ;;;; Ceiling
