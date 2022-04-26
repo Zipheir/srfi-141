@@ -1,5 +1,5 @@
 (repo git "https://github.com/Zipheir/{egg-name}.git")
 
 (uri targz "https://codeload.github.com/Zipheir/{egg-name}/tar.gz/{egg-release}" whole-repo)
-(release "0.1")
-(release "0.2")
+(release "0.1" whole-repo)
+(release "0.2" whole-repo)
