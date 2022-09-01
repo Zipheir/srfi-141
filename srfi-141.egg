@@ -3,7 +3,7 @@
 ((author "Taylor Campbell, John Cowan")
  (maintainer "Wolfgang Corcoran-Mathe")
  (synopsis "SRFI 141: Integer division")
- (version "0.2.1")
+ (version "1.0.0")
  (category math)
  (test-dependencies test)
  (license "BSD")

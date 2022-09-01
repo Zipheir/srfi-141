@@ -186,6 +186,7 @@ Wolfgang Corcoran-Mathe
 ; 0.1 : Packaged for Chicken Scheme 5 (Sergey Goldgaber)
 ; 0.2 : (2022-04-25) New maintainer, add types, use available (chicken base) forms.
 ; 0.2.1 : (2022-09-01) Add type and divisor checks, minimal tests.
+; 1.0.0 : (2022-09-01) Stable public API. (Yes, it was stable from the start.) Register {{srfi-141}} feature.
 
 === License
 
