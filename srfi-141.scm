@@ -9,7 +9,10 @@
   (import scheme
           (only (chicken base) include receive exact-integer? unless)
           (chicken condition)
+          (chicken platform)
           (chicken type))
+
+  (register-feature! 'srfi-141)
 
   (include "exceptions.scm")
   (include "srfi-141-impl.scm")
