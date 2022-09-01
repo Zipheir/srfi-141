@@ -300,7 +300,7 @@
 
 (: balanced/ (integer integer -> integer integer))
 (define (balanced/ x y)
-  (%check-arguments 'balanced/ n d)
+  (%check-arguments 'balanced/ x y)
   (call-with-values
    (lambda () (euclidean/ x y))
    (lambda (q r)
@@ -313,14 +313,14 @@
 
 (: balanced-quotient (integer integer -> integer))
 (define (balanced-quotient x y)
-  (%check-arguments 'balanced-quotient n d)
+  (%check-arguments 'balanced-quotient x y)
   (call-with-values
    (lambda () (balanced/ x y))
    (lambda (q r) q)))
 
 (: balanced-remainder (integer integer -> integer))
 (define (balanced-remainder x y)
-  (%check-arguments 'balanced-remainder n d)
+  (%check-arguments 'balanced-remainder x y)
   (call-with-values
    (lambda () (balanced/ x y))
    (lambda (q r) r)))
