@@ -34,12 +34,19 @@
 
 ;;; CHICKEN Scheme port edited by Wolfgang Corcoran-Mathe 2022.
 
+(define (%check-arguments loc n d)
+  (assert-type loc (integer? n))
+  (assert-type loc (integer? d))
+  (if (zero? d)
+      (arithmetic-exception loc "division by zero" n d)))
+
 ;;;; Integer Division
 
 ;;;; Ceiling
 
 (: ceiling/ (integer integer -> integer integer))
 (define (ceiling/ n d)
+  (%check-arguments 'ceiling/ n d)
   (if (and (exact-integer? n) (exact-integer? d))
       (cond ((and (negative? n) (negative? d))
              (ceiling-/- n d))
@@ -71,6 +78,7 @@
 
 (: ceiling-quotient (integer integer -> integer))
 (define (ceiling-quotient n d)
+  (%check-arguments 'ceiling-quotient n d)
   (if (and (exact-integer? n) (exact-integer? d))
       (cond ((and (negative? n) (negative? d))
              (receive (q r) (ceiling-/- n d) r q))
@@ -81,6 +89,7 @@
 
 (: ceiling-remainder (integer integer -> integer))
 (define (ceiling-remainder n d)
+  (%check-arguments 'ceiling-remainder n d)
   (if (and (exact-integer? n) (exact-integer? d))
       (cond ((and (negative? n) (negative? d))
              (receive (q r) (ceiling-/- n d) q r))
@@ -95,6 +104,7 @@
 
 (: euclidean/ (integer integer -> integer integer))
 (define (euclidean/ n d)
+  (%check-arguments 'euclidean/ n d)
   (if (and (exact-integer? n) (exact-integer? d))
       (cond ((and (negative? n) (negative? d)) (ceiling-/- n d))
             ((negative? n) (floor-/+ n d))
@@ -107,6 +117,7 @@
 
 (: euclidean-quotient (integer integer -> integer))
 (define (euclidean-quotient n d)
+  (%check-arguments 'euclidean-quotient n d)
   (if (and (exact-integer? n) (exact-integer? d))
       (cond ((and (negative? n) (negative? d))
              (receive (q r) (ceiling-/- n d) r q))
@@ -117,6 +128,7 @@
 
 (: euclidean-remainder (integer integer -> integer))
 (define (euclidean-remainder n d)
+  (%check-arguments 'euclidean-remainder n d)
   (if (and (exact-integer? n) (exact-integer? d))
       (cond ((and (negative? n) (negative? d))
              (receive (q r) (ceiling-/- n d) q r))
@@ -129,6 +141,7 @@
 
 (: floor/ (integer integer -> integer integer))
 (define (floor/ n d)
+  (%check-arguments 'floor/ n d)
   (if (and (exact-integer? n) (exact-integer? d))
       (cond ((and (negative? n) (negative? d))
              (let ((n (- 0 n)) (d (- 0 d)))
@@ -157,6 +170,7 @@
 
 (: floor-quotient (integer integer -> integer))
 (define (floor-quotient n d)
+  (%check-arguments 'floor-quotient n d)
   (if (and (exact-integer? n) (exact-integer? d))
       (cond ((and (negative? n) (negative? d)) (quotient (- 0 n) (- 0 d)))
             ((negative? n) (receive (q r) (floor-/+ n d) r q))
@@ -166,6 +180,7 @@
 
 (: floor-remainder (integer integer -> integer))
 (define (floor-remainder n d)
+  (%check-arguments 'floor-remainder n d)
   (if (and (exact-integer? n) (exact-integer? d))
       (cond ((and (negative? n) (negative? d))
              (- 0 (remainder (- 0 n) (- 0 d))))
@@ -178,6 +193,7 @@
 
 (: round/ (integer integer -> integer integer))
 (define (round/ n d)
+  (%check-arguments 'round/ n d)
   (define (divide n d adjust leave)
     (let ((q (quotient n d)) (r (remainder n d)))
       (if (and (not (zero? r))
@@ -212,6 +228,7 @@
 
 (: round-quotient (integer integer -> integer))
 (define (round-quotient n d)
+  (%check-arguments 'round-quotient n d)
   (if (and (exact-integer? n) (exact-integer? d))
       (receive (q r) (round/ n d)
         r                               ;ignore
@@ -220,6 +237,7 @@
 
 (: round-remainder (integer integer -> integer))
 (define (round-remainder n d)
+  (%check-arguments 'round-remainder n d)
   (if (and (exact-integer? n) (exact-integer? d))
       (receive (q r) (round/ n d)
         q                               ;ignore
@@ -230,6 +248,7 @@
 
 (: truncate/ (integer integer -> integer integer))
 (define (truncate/ n d)
+  (%check-arguments 'truncate/ n d)
   (if (and (exact-integer? n) (exact-integer? d))
       (cond ((and (negative? n) (negative? d))
              (let ((n (- 0 n)) (d (- 0 d)))
@@ -247,6 +266,7 @@
 
 (: truncate-quotient (integer integer -> integer))
 (define (truncate-quotient n d)
+  (%check-arguments 'truncate-quotient n d)
   (if (and (exact-integer? n) (exact-integer? d))
       (cond ((and (negative? n) (negative? d)) (quotient (- 0 n) (- 0 d)))
             ((negative? n) (- 0 (quotient (- 0 n) d)))
@@ -256,6 +276,7 @@
 
 (: truncate-remainder (integer integer -> integer))
 (define (truncate-remainder n d)
+  (%check-arguments 'truncate-remainder n d)
   (if (and (exact-integer? n) (exact-integer? d))
       (cond ((and (negative? n) (negative? d))
              (- 0 (remainder (- 0 n) (- 0 d))))
@@ -279,6 +300,7 @@
 
 (: balanced/ (integer integer -> integer integer))
 (define (balanced/ x y)
+  (%check-arguments 'balanced/ n d)
   (call-with-values
    (lambda () (euclidean/ x y))
    (lambda (q r)
@@ -291,12 +313,14 @@
 
 (: balanced-quotient (integer integer -> integer))
 (define (balanced-quotient x y)
+  (%check-arguments 'balanced-quotient n d)
   (call-with-values
    (lambda () (balanced/ x y))
    (lambda (q r) q)))
 
 (: balanced-remainder (integer integer -> integer))
 (define (balanced-remainder x y)
+  (%check-arguments 'balanced-remainder n d)
   (call-with-values
    (lambda () (balanced/ x y))
    (lambda (q r) r)))
