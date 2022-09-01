@@ -4,8 +4,7 @@
    truncate/ truncate-quotient truncate-remainder
    round/ round-quotient round-remainder
    euclidean/ euclidean-quotient euclidean-remainder
-   balanced/ balanced-quotient balanced-remainder
-   ceiling/ ceiling-quotient ceiling-remainder)
+   balanced/ balanced-quotient balanced-remainder)
 
   (import scheme
           (only (chicken base) include receive exact-integer? unless)
