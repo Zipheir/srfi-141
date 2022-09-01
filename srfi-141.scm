@@ -8,7 +8,7 @@
    ceiling/ ceiling-quotient ceiling-remainder)
 
   (import scheme
-          (only (chicken base) include receive exact-integer?)
+          (only (chicken base) include receive exact-integer? unless)
           (chicken condition)
           (chicken type))
 
