@@ -149,7 +149,22 @@ When ''d'' is a power of 2, say 2^''k'' for some ''k'', this reduces to
 Computer scientists will immediately recognize this as the interval of
 integers representable in two's-complement with ''k'' bits.
 
+== Exceptions
+
+This egg tries to give useful information when things go wrong.
+Procedure arguments are type-checked; when a type check fails, a
+condition of kind {{(exn type assertion)}} is raised.  Division
+by zero is signaled by raising an {{(exn arithmetic)}} condition.
+This conforms to the condition protocol used by CHICKEN's internal
+libraries.
+
+See the [[Module (chicken condition)]] page for more information.
+
 == About this egg
+
+=== Dependencies
+
+The [[test]] egg is needed to run the included tests.
 
 === Authors
 
@@ -170,6 +185,7 @@ Wolfgang Corcoran-Mathe
 
 ; 0.1 : Packaged for Chicken Scheme 5 (Sergey Goldgaber)
 ; 0.2 : (2022-04-25) New maintainer, add types, use available (chicken base) forms.
+; 0.2.1 : (2022-09-01) Add type and divisor checks, minimal tests.
 
 === License
 
